@@ -74,6 +74,8 @@ endif
 
 LD=$(CC)
 
+LDFLAGS=-L/ccs/proj/csc040/naughton/d2lang/install/lib
+
 CPPFLAGS=-I.
 LIBS=-lm
 

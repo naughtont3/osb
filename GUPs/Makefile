@@ -48,7 +48,7 @@ CFLAGS         = -O3
 # any extra paths/flags needed
 #
 SHMEM_INC_PATH =
-SHMEM_LDFLAGS  =
+SHMEM_LDFLAGS  = -L/ccs/proj/csc040/naughton/d2lang/install/lib
 SHMEM_LIBS     =
 
 CPPFLAGS       = -I./include $(SHMEM_INC_PATH)

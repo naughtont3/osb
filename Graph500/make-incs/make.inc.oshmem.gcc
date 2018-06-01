@@ -5,6 +5,7 @@
 # TJN: Add '-D_BSE_SOURCE' to enable use of strdup()
 CFLAGS = -g -std=c99 -Wall -Igenerator -I. -D_BSD_SOURCE -DUSE_OPENSHMEM
 LDLIBS = -lm -lrt
+LDFLAGS = -L/ccs/proj/csc040/naughton/d2lang/install/lib
 #CPPFLAGS = -DUSE_OPENSHMEM -UUSE_MMAP_LARGE -UUSE_MMAP_LARGE_EXT
 CPPFLAGS = -DUSE_OPENSHMEM
 

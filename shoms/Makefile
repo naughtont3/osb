@@ -23,7 +23,7 @@ OSHLD=$(OSHCC)
 CC=gcc
 CPPFLAGS=-Isrc/include/ #-DDEBUG #-DNDEBUG
 CFLAGS=-g -std=c99 -Os -Wall
-LDFLAGS=
+LDFLAGS=-L/ccs/proj/csc040/naughton/d2lang/install/lib
 LIBS=-lm
 
 OBJECTS=src/main.o src/test_list.o src/tests.o src/orbtimer.o src/process_parameters.o
