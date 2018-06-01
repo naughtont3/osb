@@ -251,8 +251,10 @@ int main(int argc, char **argv)
 #pragma omp parallel firstprivate(ran) private(tid,remote_proc,remote_val)
 {
   tid = omp_get_thread_num();
-  shmem_ctx_h ctx;
-  shmem_ctx_create( &ctx );
+  //shmem_ctx_h ctx;
+  //shmem_ctx_create( &ctx );
+  shmem_ctx_t ctx;
+  shmem_ctx_create(0, &ctx);
 
 #pragma omp for private(iterate) 
   for (iterate = 0; iterate < niterate; iterate++) {
@@ -269,7 +271,8 @@ int main(int argc, char **argv)
       shmem_ctx_quiet(ctx);
 
       if(verify){
-        shmem_ctx_longlong_inc(ctx, &(updates[MyProc][tid]), remote_proc);
+        //shmem_ctx_longlong_inc(ctx, &(updates[MyProc][tid]), remote_proc);
+        shmem_ctx_longlong_atomic_inc(ctx, &(updates[MyProc][tid]), remote_proc);
       }
   }
  }//end omp-parallel 

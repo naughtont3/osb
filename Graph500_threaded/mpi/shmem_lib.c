@@ -7,6 +7,7 @@
 #include <assert.h>
 #include <string.h>
 
+#include <shmem.h>
 #include "shmem_lib.h"
 
 
