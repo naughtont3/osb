@@ -18,12 +18,14 @@
 
 SHMEM12 = 1
 
-OSHCC=oshcc
+#OSHCC=oshcc
+OSHCC=cc
 OSHLD=$(OSHCC)
 CC=gcc
 CPPFLAGS=-Isrc/include/ #-DDEBUG #-DNDEBUG
-CFLAGS=-g -std=c99 -Os -Wall
+CFLAGS=-g -std=c11 -Os -Wall
 LDFLAGS=
+#LDFLAGS= -g -Wl,--eh-frame-hdr -Wl,@/ccs/proj/csc040/naughton/d2lang/osb_crayshmem_install/map-sampler/allinea-profiler.ld
 LIBS=-lm
 
 OBJECTS=src/main.o src/test_list.o src/tests.o src/orbtimer.o src/process_parameters.o
