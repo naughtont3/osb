@@ -120,7 +120,8 @@ int main(int argc, char** argv) {
     shmem_init_thread(SHMEM_THREAD_MULTIPLE);
  #else
     int provided;
-    shmem_init_thread(SHMEM_THREAD_MULTIPLE, &provided);
+    //shmem_init_thread(SHMEM_THREAD_MULTIPLE, &provided);
+    shmemx_init_thread(SHMEM_THREAD_MULTIPLE, &provided);
  #endif /* X_HAVE_CRAY_SHMEM */
 #ifdef WITH_CTX
     int nr_threads = omp_get_max_threads(); 

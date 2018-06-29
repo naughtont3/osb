@@ -251,8 +251,10 @@ int main(int argc, char **argv)
 #pragma omp parallel firstprivate(ran) private(tid,remote_proc,remote_val)
 {
   tid = omp_get_thread_num();
-  shmem_ctx_h ctx;
-  shmem_ctx_create( &ctx );
+  //shmem_ctx_h ctx;
+  //shmem_ctx_create( &ctx );
+  shmemx_ctx_h ctx;
+  shmemx_ctx_create( &ctx );
 
 #pragma omp for private(iterate) 
   for (iterate = 0; iterate < niterate; iterate++) {
@@ -263,13 +265,17 @@ int main(int argc, char **argv)
       if(remote_proc == MyProc)
         remote_proc = (remote_proc+1)%NumProcs;
    
-      remote_val  = shmem_ctx_longlong_g(ctx, &HPCC_Table[ran & (LocalTableSize-1)],remote_proc);
+      //remote_val  = shmem_ctx_longlong_g(ctx, &HPCC_Table[ran & (LocalTableSize-1)],remote_proc);
+      remote_val  = shmemx_ctx_longlong_g(ctx, &HPCC_Table[ran & (LocalTableSize-1)],remote_proc);
       remote_val ^= ran;
-      shmem_ctx_longlong_p(ctx, &HPCC_Table[ran & (LocalTableSize-1)],remote_val, remote_proc);
-      shmem_ctx_quiet(ctx);
+      //shmem_ctx_longlong_p(ctx, &HPCC_Table[ran & (LocalTableSize-1)],remote_val, remote_proc);
+      shmemx_ctx_longlong_p(ctx, &HPCC_Table[ran & (LocalTableSize-1)],remote_val, remote_proc);
+      //shmem_ctx_quiet(ctx);
+      shmemx_ctx_quiet(ctx);
 
       if(verify){
-        shmem_ctx_longlong_inc(ctx, &(updates[MyProc][tid]), remote_proc);
+        //shmem_ctx_longlong_inc(ctx, &(updates[MyProc][tid]), remote_proc);
+        shmemx_ctx_longlong_inc(ctx, &(updates[MyProc][tid]), remote_proc);
       }
   }
  }//end omp-parallel 

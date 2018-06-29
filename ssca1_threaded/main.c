@@ -125,7 +125,8 @@ int main(int argc, char **argv)
 #endif
 
   int thread_level;
-  shmem_init_thread(SHMEM_THREAD_MULTIPLE, &thread_level);
+  //shmem_init_thread(SHMEM_THREAD_MULTIPLE, &thread_level);
+  shmemx_init_thread(SHMEM_THREAD_MULTIPLE, &thread_level);
   num_nodes=shmem_n_pes();
   rank=shmem_my_pe();
   if(rank == 0)

@@ -78,7 +78,7 @@
  */
 
 
-#include "mpi.h"
+//#include "mpi.h"
 #include <mpp/shmem.h>
 #include "npbparams.h"
 #include <stdlib.h>
